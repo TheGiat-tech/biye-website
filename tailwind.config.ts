@@ -12,10 +12,6 @@ const config: Config = {
           light: '#6B8CBB',
           dark: '#2D4A6F',
         },
-        slate: {
-          900: '#1E293B',
-          500: '#64748B',
-        },
         border: '#E2E8F0',
         'light-bg': '#F8FAFC',
       },
