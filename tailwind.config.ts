@@ -7,9 +7,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        berry: '#D56686',
-        peach: '#F8D5D8',
-        blush: '#E9A7B8',
+        primary: {
+          DEFAULT: '#4A6FA5',
+          light: '#6B8CBB',
+          dark: '#2D4A6F',
+        },
+        border: '#E2E8F0',
+        'light-bg': '#F8FAFC',
       },
       fontFamily: {
         sans: [

@@ -1,34 +1,32 @@
 export default function Solution() {
   const features = [
     {
-      icon: '🔧',
       title: 'Smart IoT hygiene-access machines',
     },
     {
-      icon: '📍',
       title: 'Strategic placement in public environments',
     },
     {
-      icon: '✨',
       title: 'Seamless, discreet user experience',
     },
     {
-      icon: '📊',
       title: 'Full operational monitoring',
     },
   ]
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-20 sm:py-24 bg-white border-t border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-16 text-center">
           Our Solution
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="text-center">
-              <div className="text-5xl mb-4">{feature.icon}</div>
-              <p className="text-lg text-gray-700">{feature.title}</p>
+              <div className="mb-4 flex justify-center">
+                <div className="w-3 h-3 rounded-full bg-primary"></div>
+              </div>
+              <p className="text-lg text-slate-500">{feature.title}</p>
             </div>
           ))}
         </div>
