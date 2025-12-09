@@ -5,7 +5,7 @@ export default function VisionHE() {
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">
           החזון שלנו
         </h2>
-        <blockquote className="text-xl sm:text-2xl text-gray-800 text-center max-w-4xl mx-auto italic border-r-4 border-berry pr-6">
+        <blockquote className="text-xl sm:text-2xl text-gray-800 text-center max-w-4xl mx-auto italic border-l-4 border-berry pl-6">
           BiYé איננה רק מכונה — היא הצהרה של כבוד, הכלה ועיצוב מרחב ציבורי מודרני.
         </blockquote>
       </div>
