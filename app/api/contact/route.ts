@@ -13,6 +13,12 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
+// Helper function to sanitize email header to prevent header injection
+function sanitizeHeader(text: string): string {
+  // Remove newlines and carriage returns to prevent header injection
+  return text.replace(/[\r\n]/g, ' ').trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Parse request body
@@ -73,19 +79,22 @@ export async function POST(request: NextRequest) {
     const sanitizedSubject = escapeHtml(subject || 'N/A');
     const sanitizedMessage = escapeHtml(message);
 
+    // Sanitize for email headers to prevent header injection
+    const headerSafeSubject = sanitizeHeader(subject || `Contact Form Submission from ${name}`);
+
     // Prepare email content
     const mailOptions = {
       from: smtpUser,
       to: contactEmail,
       replyTo: email,
-      subject: subject || `Contact Form Submission from ${name}`,
+      subject: headerSafeSubject,
       text: `
-Name: ${name}
-Email: ${email}
-Subject: ${subject || 'N/A'}
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+Subject: ${sanitizedSubject}
 
 Message:
-${message}
+${sanitizedMessage}
       `,
       html: `
 <!DOCTYPE html>
