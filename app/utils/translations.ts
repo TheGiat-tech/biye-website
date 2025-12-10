@@ -56,7 +56,7 @@ export const translations: Record<'en' | 'he', Translation> = {
     },
     media: {
       title: 'Media & Visuals',
-      text: 'Below are example visuals representing the BiYé smart hygiene-access machine and its environment.\n(Replace with final product images.)',
+      text: 'An illustration highlighting the BiYé smart hygiene experience for media use.',
     },
     contact: {
       title: 'Contact Us',
@@ -217,7 +217,7 @@ export const translations: Record<'en' | 'he', Translation> = {
     },
     media: {
       title: 'מדיה',
-      text: 'כאן יוצגו תמונות ודוגמאות של מכונת BiYé והטמעתה במרחב הציבורי.\n(יש להחליף בתמונות מוצר סופיות.)',
+      text: 'איור שמציג את חוויית ההיגיינה החכמה של BiYé לשימושי מדיה.',
     },
     contact: {
       title: 'צור קשר',
