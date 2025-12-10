@@ -87,12 +87,12 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
 
             {/* CTA Button - Only show for English */}
             {lang === 'en' && (
-              <Link
+              <a
                 href="#contact"
                 className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-smooth font-semibold"
               >
                 {t.header.cta}
-              </Link>
+              </a>
             )}
           </nav>
 
