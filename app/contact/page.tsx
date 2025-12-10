@@ -4,11 +4,28 @@ import { useLanguage } from '../components/LanguageContext';
 import { translations } from '../utils/translations';
 import Header from '../components/global/Header';
 import Footer from '../components/global/Footer';
+import { useState, FormEvent } from 'react';
 
 export default function ContactPage() {
   const { lang, toggleLanguage } = useLanguage();
   const t = translations[lang];
   const isRTL = lang === 'he';
+  const [formState, setFormState] = useState({ submitting: false, submitted: false, error: false });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState({ submitting: true, submitted: false, error: false });
+
+    // Simulate form submission - In production, this would call an API
+    try {
+      // TODO: Implement actual form submission to backend/email service
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setFormState({ submitting: false, submitted: true, error: false });
+      (e.target as HTMLFormElement).reset();
+    } catch {
+      setFormState({ submitting: false, submitted: false, error: true });
+    }
+  };
 
   return (
     <div className={`min-h-screen bg-lightBg ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -32,7 +49,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-textDark mb-2">
                     {t.contact.fields.name}
@@ -40,8 +57,10 @@ export default function ContactPage() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
                     required
+                    disabled={formState.submitting}
                   />
                 </div>
                 <div>
@@ -51,8 +70,10 @@ export default function ContactPage() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
                     required
+                    disabled={formState.submitting}
                   />
                 </div>
                 <div>
@@ -62,8 +83,10 @@ export default function ContactPage() {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
                     required
+                    disabled={formState.submitting}
                   />
                 </div>
                 <div>
@@ -72,16 +95,35 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={6}
                     className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
                     required
+                    disabled={formState.submitting}
                   ></textarea>
                 </div>
+                
+                {formState.submitted && (
+                  <div className="bg-green-50 border-2 border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                    {lang === 'en' ? 'Thank you! Your message has been sent.' : 'תודה! ההודעה שלך נשלחה.'}
+                  </div>
+                )}
+                
+                {formState.error && (
+                  <div className="bg-red-50 border-2 border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                    {lang === 'en' ? 'An error occurred. Please try again.' : 'אירעה שגיאה. אנא נסה שוב.'}
+                  </div>
+                )}
+                
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-darkPeach transition-smooth shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-darkPeach transition-smooth shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={formState.submitting}
                 >
-                  {t.contact.button}
+                  {formState.submitting 
+                    ? (lang === 'en' ? 'Sending...' : 'שולח...')
+                    : t.contact.button
+                  }
                 </button>
               </form>
             </div>

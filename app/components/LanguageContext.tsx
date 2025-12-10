@@ -15,22 +15,40 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('en');
 
   useEffect(() => {
-    // Check localStorage for saved language preference
-    const savedLang = localStorage.getItem('biye-lang') as Language;
-    if (savedLang && (savedLang === 'en' || savedLang === 'he')) {
-      setLang(savedLang);
+    // Check localStorage for saved language preference with error handling
+    if (typeof window !== 'undefined') {
+      try {
+        const savedLang = localStorage.getItem('biye-lang') as Language;
+        if (savedLang && (savedLang === 'en' || savedLang === 'he')) {
+          setLang(savedLang);
+        }
+      } catch (error) {
+        console.error('Error reading from localStorage:', error);
+      }
     }
   }, []);
 
   const toggleLanguage = () => {
     const newLang = lang === 'en' ? 'he' : 'en';
     setLang(newLang);
-    localStorage.setItem('biye-lang', newLang);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('biye-lang', newLang);
+      } catch (error) {
+        console.error('Error writing to localStorage:', error);
+      }
+    }
   };
 
   const setLanguage = (newLang: Language) => {
     setLang(newLang);
-    localStorage.setItem('biye-lang', newLang);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('biye-lang', newLang);
+      } catch (error) {
+        console.error('Error writing to localStorage:', error);
+      }
+    }
   };
 
   return (
