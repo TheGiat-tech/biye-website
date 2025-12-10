@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Helper function to escape HTML to prevent XSS
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (char) => map[char]);
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Parse request body
@@ -41,7 +53,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create nodemailer transporter
+    // Create nodemailer transporter with timeout
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: parseInt(smtpPort),
@@ -50,7 +62,16 @@ export async function POST(request: NextRequest) {
         user: smtpUser,
         pass: smtpPass,
       },
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
+
+    // Sanitize user inputs for HTML email
+    const sanitizedName = escapeHtml(name);
+    const sanitizedEmail = escapeHtml(email);
+    const sanitizedSubject = escapeHtml(subject || 'N/A');
+    const sanitizedMessage = escapeHtml(message);
 
     // Prepare email content
     const mailOptions = {
@@ -78,7 +99,7 @@ ${message}
     .field { margin-bottom: 15px; }
     .label { font-weight: bold; color: #666; }
     .value { margin-top: 5px; }
-    .message { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; }
+    .message { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; white-space: pre-wrap; }
   </style>
 </head>
 <body>
@@ -89,22 +110,22 @@ ${message}
     
     <div class="field">
       <div class="label">From:</div>
-      <div class="value">${name}</div>
+      <div class="value">${sanitizedName}</div>
     </div>
     
     <div class="field">
       <div class="label">Email:</div>
-      <div class="value"><a href="mailto:${email}">${email}</a></div>
+      <div class="value"><a href="mailto:${sanitizedEmail}">${sanitizedEmail}</a></div>
     </div>
     
     <div class="field">
       <div class="label">Subject:</div>
-      <div class="value">${subject || 'N/A'}</div>
+      <div class="value">${sanitizedSubject}</div>
     </div>
     
     <div class="field">
       <div class="label">Message:</div>
-      <div class="message">${message.replace(/\n/g, '<br>')}</div>
+      <div class="message">${sanitizedMessage}</div>
     </div>
   </div>
 </body>

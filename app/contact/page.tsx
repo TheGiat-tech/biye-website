@@ -40,7 +40,10 @@ export default function ContactPage() {
       setFormState({ submitting: false, submitted: true, error: false });
       formElement.reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
+      // Only log generic error in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error submitting form:', error);
+      }
       setFormState({ submitting: false, submitted: false, error: true });
     }
   };
