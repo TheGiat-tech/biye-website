@@ -7,6 +7,18 @@ type ReqBody = {
   message?: string;
 };
 
+// Helper function to escape HTML to prevent XSS
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (char) => map[char]);
+}
+
 export async function POST(request: Request) {
   try {
     const body: ReqBody = await request.json();
@@ -51,7 +63,7 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: `${subject}`,
       text: `${message}\n\nFrom: ${name} <${email}>`,
-      html: `<p>${message.replace(/\n/g, '<br/>')}</p><hr/><p>From: ${name} &lt;${email}&gt;</p>`,
+      html: `<p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p><hr/><p>From: ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>`,
     };
 
     await transporter.sendMail(mailOptions);
