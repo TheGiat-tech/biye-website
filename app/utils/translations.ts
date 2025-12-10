@@ -70,7 +70,7 @@ export const translations: Record<'en' | 'he', Translation> = {
       button: 'Send Message',
       info: {
         title: 'Contact Information',
-        email: 'info@biye.com',
+        email: 'info@biyecare.com',
         address: 'Innovation Hub, Tel Aviv, Israel',
       },
     },
@@ -93,7 +93,7 @@ export const translations: Record<'en' | 'he', Translation> = {
       },
       connect: {
         title: 'Connect With Us',
-        email: 'info@biye.com',
+        email: 'info@biyecare.com',
       },
       copyright: '© 2024 BiYé. All rights reserved.',
     },
@@ -119,11 +119,11 @@ export const translations: Record<'en' | 'he', Translation> = {
         },
         {
           title: 'Your Rights',
-          content: 'You have the right to access, correct, or delete your personal information. You may also object to processing or request data portability. To exercise these rights, please contact us at info@biye.com.',
+          content: 'You have the right to access, correct, or delete your personal information. You may also object to processing or request data portability. To exercise these rights, please contact us at info@biyecare.com.',
         },
         {
           title: 'Contact Us',
-          content: 'If you have any questions about this Privacy Policy, please contact us at info@biye.com.',
+          content: 'If you have any questions about this Privacy Policy, please contact us at info@biyecare.com.',
         },
       ],
     },
@@ -157,7 +157,7 @@ export const translations: Record<'en' | 'he', Translation> = {
         },
         {
           title: 'Contact Information',
-          content: 'For questions about these Terms of Use, please contact us at info@biye.com.',
+          content: 'For questions about these Terms of Use, please contact us at info@biyecare.com.',
         },
       ],
     },
@@ -231,7 +231,7 @@ export const translations: Record<'en' | 'he', Translation> = {
       button: 'שלח הודעה',
       info: {
         title: 'פרטי התקשרות',
-        email: 'info@biye.com',
+        email: 'info@biyecare.com',
         address: 'מרכז חדשנות, תל אביב, ישראל',
       },
     },
@@ -254,7 +254,7 @@ export const translations: Record<'en' | 'he', Translation> = {
       },
       connect: {
         title: 'צור קשר',
-        email: 'info@biye.com',
+        email: 'info@biyecare.com',
       },
       copyright: '© 2024 BiYé. כל הזכויות שמורות.',
     },
@@ -280,11 +280,11 @@ export const translations: Record<'en' | 'he', Translation> = {
         },
         {
           title: 'הזכויות שלך',
-          content: 'יש לך זכות לגשת, לתקן או למחוק את המידע האישי שלך. אתה יכול גם להתנגד לעיבוד או לבקש ניידות נתונים. כדי לממש זכויות אלה, אנא צור איתנו קשר בכתובת info@biye.com.',
+          content: 'יש לך זכות לגשת, לתקן או למחוק את המידע האישי שלך. אתה יכול גם להתנגד לעיבוד או לבקש ניידות נתונים. כדי לממש זכויות אלה, אנא צור איתנו קשר בכתובת info@biyecare.com.',
         },
         {
           title: 'צור קשר',
-          content: 'אם יש לך שאלות כלשהן לגבי מדיניות פרטיות זו, אנא צור איתנו קשר בכתובת info@biye.com.',
+          content: 'אם יש לך שאלות כלשהן לגבי מדיניות פרטיות זו, אנא צור איתנו קשר בכתובת info@biyecare.com.',
         },
       ],
     },
@@ -318,7 +318,7 @@ export const translations: Record<'en' | 'he', Translation> = {
         },
         {
           title: 'פרטי התקשרות',
-          content: 'לשאלות לגבי תנאי שימוש אלה, אנא צור איתנו קשר בכתובת info@biye.com.',
+          content: 'לשאלות לגבי תנאי שימוש אלה, אנא צור איתנו קשר בכתובת info@biyecare.com.',
         },
       ],
     },
