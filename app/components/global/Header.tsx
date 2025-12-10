@@ -84,16 +84,6 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
             >
               {t.header.menu.langToggle}
             </button>
-
-            {/* CTA Button - Only show for English */}
-            {lang === 'en' && (
-              <a
-                href="#contact"
-                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-smooth font-semibold"
-              >
-                {t.header.cta}
-              </a>
-            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -180,16 +170,6 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
             >
               {t.header.menu.contact}
             </a>
-            {/* CTA Button - Only show for English */}
-            {lang === 'en' && (
-              <a
-                href="#contact"
-                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:shadow-lg transition-smooth font-semibold text-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t.header.cta}
-              </a>
-            )}
           </nav>
         )}
       </div>
