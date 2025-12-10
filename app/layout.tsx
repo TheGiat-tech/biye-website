@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BiYé - FemTech & IoT Accessibility Solutions",
-  description: "Professional medical device solutions for women's health and accessibility",
+  title: "BiYé - Smart FemTech & IoT Solution for Women's Hygiene Accessibility",
+  description: "BiYé is a next-generation FemTech and IoT initiative redefining women's hygiene accessibility in public environments. Enhancing women's wellbeing through discreet, reliable access.",
 };
 
 export default function RootLayout({
