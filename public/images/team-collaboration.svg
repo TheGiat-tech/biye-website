@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Team collaboration illustration -->
+  <circle cx="100" cy="100" r="90" fill="#FFF5F3"/>
+  
+  <!-- Three people figures -->
+  <!-- Person 1 (left) -->
+  <circle cx="70" cy="80" r="15" fill="#FF9A8B"/>
+  <path d="M70 95 L70 125 M70 105 L55 115 M70 105 L85 115" stroke="#FF9A8B" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Person 2 (center) -->
+  <circle cx="100" cy="70" r="15" fill="#FF6A88"/>
+  <path d="M100 85 L100 115 M100 95 L85 105 M100 95 L115 105" stroke="#FF6A88" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Person 3 (right) -->
+  <circle cx="130" cy="80" r="15" fill="#FF99AC"/>
+  <path d="M130 95 L130 125 M130 105 L115 115 M130 105 L145 115" stroke="#FF99AC" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Connection dots -->
+  <circle cx="80" cy="105" r="4" fill="#FF6A88"/>
+  <circle cx="120" cy="105" r="4" fill="#FF6A88"/>
+  <line x1="80" y1="105" x2="120" y2="105" stroke="#FF6A88" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Hearts representing care -->
+  <path d="M95 140 L100 145 L105 140 Q108 137 108 134 Q108 131 105 131 Q102 131 100 133 Q98 131 95 131 Q92 131 92 134 Q92 137 95 140 Z" fill="#FF6A88"/>
+</svg>
