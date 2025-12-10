@@ -7,8 +7,11 @@ export const translations: Record<'en' | 'he', Translation> = {
       menu: {
         home: 'Home',
         about: 'About',
+        problem: 'Problem',
         solution: 'Solution',
+        vision: 'Vision',
         investors: 'Investors',
+        media: 'Media',
         contact: 'Contact',
         langToggle: 'HE',
       },
@@ -168,8 +171,11 @@ export const translations: Record<'en' | 'he', Translation> = {
       menu: {
         home: 'בית',
         about: 'אודות',
+        problem: 'בעיה',
         solution: 'פתרון',
+        vision: 'חזון',
         investors: 'משקיעים',
+        media: 'מדיה',
         contact: 'צור קשר',
         langToggle: 'EN',
       },

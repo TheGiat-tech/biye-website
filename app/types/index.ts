@@ -6,8 +6,11 @@ export interface Translation {
     menu: {
       home: string;
       about: string;
+      problem: string;
       solution: string;
+      vision: string;
       investors: string;
+      media: string;
       contact: string;
       langToggle: string;
     };
