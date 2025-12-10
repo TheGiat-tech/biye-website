@@ -4,6 +4,7 @@ import { useLanguage } from './components/LanguageContext';
 import { translations } from './utils/translations';
 import Header from './components/global/Header';
 import Footer from './components/global/Footer';
+import ContactForm from './contact/ContactForm.client';
 import Image from 'next/image';
 
 export default function Home() {
@@ -120,47 +121,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 bg-white">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-12 text-center">{t.contact.title}</h2>
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-textDark mb-2">
-                {t.contact.fields.name}
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-textDark mb-2">
-                {t.contact.fields.email}
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-textDark mb-2">
-                {t.contact.fields.message}
-              </label>
-              <textarea
-                id="message"
-                rows={6}
-                className="w-full px-4 py-3 border-2 border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white"
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-darkPeach transition-smooth shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              {t.contact.button}
-            </button>
-          </form>
+          <ContactForm lang={lang} t={t} />
         </div>
       </section>
 
