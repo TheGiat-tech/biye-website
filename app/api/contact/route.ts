@@ -80,21 +80,23 @@ export async function POST(request: NextRequest) {
     const sanitizedMessage = escapeHtml(message);
 
     // Sanitize for email headers to prevent header injection
-    const headerSafeSubject = sanitizeHeader(subject || `Contact Form Submission from ${name}`);
+    const headerSafeName = sanitizeHeader(name);
+    const headerSafeEmail = sanitizeHeader(email);
+    const headerSafeSubject = sanitizeHeader(subject || `Contact Form Submission from ${headerSafeName}`);
 
     // Prepare email content
     const mailOptions = {
       from: smtpUser,
       to: contactEmail,
-      replyTo: email,
+      replyTo: headerSafeEmail,
       subject: headerSafeSubject,
       text: `
-Name: ${sanitizedName}
-Email: ${sanitizedEmail}
-Subject: ${sanitizedSubject}
+Name: ${name}
+Email: ${email}
+Subject: ${subject || 'N/A'}
 
 Message:
-${sanitizedMessage}
+${message}
       `,
       html: `
 <!DOCTYPE html>
