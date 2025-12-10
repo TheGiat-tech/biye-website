@@ -16,6 +16,7 @@ export default function ContactForm({ lang, t }: Props) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitted(false);
     setError(null);
 
     const form = new FormData(e.currentTarget);
