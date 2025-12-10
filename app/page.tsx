@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-6 bg-white">
+      <section id="about" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.about.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
@@ -46,7 +46,7 @@ export default function Home() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 px-6 bg-lightBg">
+      <section id="problem" className="py-20 px-6 bg-lightBg">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.problem.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 px-6 bg-white">
+      <section id="solution" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-12 text-center">{t.solution.title}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-secondary/20 to-accent/20">
+      <section id="vision" className="py-20 px-6 bg-gradient-to-br from-secondary/20 to-accent/20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.vision.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* Investors Section */}
-      <section className="py-20 px-6 bg-white">
+      <section id="investors" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.investors.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
@@ -96,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* Media Section */}
-      <section className="py-20 px-6 bg-lightBg">
+      <section id="media" className="py-20 px-6 bg-lightBg">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.media.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center mb-12 whitespace-pre-line">
