@@ -104,11 +104,12 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-primary/20">
               <Image
-                src="/biye-machine.svg"
-                alt="BiYé Smart Hygiene Access Machine"
-                width={800}
-                height={600}
+                src="/biye-media.png"
+                alt="BiYé media illustration featuring the smart hygiene experience"
+                width={1024}
+                height={1024}
                 className="rounded-lg"
+                priority
               />
             </div>
           </div>
