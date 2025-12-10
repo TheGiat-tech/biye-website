@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "Revolutionizing women's hygiene accessibility through smart FemTech and IoT solutions.",
   },
   icons: {
-    icon: "/icon.svg",
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
     shortcut: "/icon.svg",
   },
 };
