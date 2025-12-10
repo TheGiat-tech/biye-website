@@ -19,6 +19,13 @@ function sanitizeHeader(text: string): string {
   return text.replace(/[\r\n]/g, ' ').trim();
 }
 
+// Constants for validation
+const MAX_NAME_LENGTH = 200;
+const MAX_EMAIL_LENGTH = 200;
+const MAX_SUBJECT_LENGTH = 500;
+const MAX_MESSAGE_LENGTH = 10000;
+const SMTP_TIMEOUT_MS = 10000; // 10 seconds
+
 export async function POST(request: NextRequest) {
   try {
     // Parse request body
@@ -34,7 +41,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate field lengths to prevent abuse
-    if (name.length > 200 || email.length > 200 || (subject && subject.length > 500) || message.length > 10000) {
+    if (
+      name.length > MAX_NAME_LENGTH || 
+      email.length > MAX_EMAIL_LENGTH || 
+      (subject && subject.length > MAX_SUBJECT_LENGTH) || 
+      message.length > MAX_MESSAGE_LENGTH
+    ) {
       return NextResponse.json(
         { error: 'One or more fields exceed maximum length' },
         { status: 400 }
@@ -76,9 +88,9 @@ export async function POST(request: NextRequest) {
         user: smtpUser,
         pass: smtpPass,
       },
-      connectionTimeout: 10000, // 10 seconds
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
+      connectionTimeout: SMTP_TIMEOUT_MS,
+      greetingTimeout: SMTP_TIMEOUT_MS,
+      socketTimeout: SMTP_TIMEOUT_MS,
     });
 
     // Sanitize user inputs for HTML email
