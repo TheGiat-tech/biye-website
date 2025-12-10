@@ -27,36 +27,54 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className={`hidden md:flex items-center ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
-            <Link 
-              href="/#home" 
+            <a 
+              href="#home" 
               className="text-textMedium hover:text-primary transition-smooth font-medium"
             >
               {t.header.menu.home}
-            </Link>
-            <Link 
-              href="/#about" 
+            </a>
+            <a 
+              href="#about" 
               className="text-textMedium hover:text-primary transition-smooth font-medium"
             >
               {t.header.menu.about}
-            </Link>
-            <Link 
-              href="/#solution" 
+            </a>
+            <a 
+              href="#problem" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium"
+            >
+              {t.header.menu.problem}
+            </a>
+            <a 
+              href="#solution" 
               className="text-textMedium hover:text-primary transition-smooth font-medium"
             >
               {t.header.menu.solution}
-            </Link>
-            <Link 
-              href="/investors" 
+            </a>
+            <a 
+              href="#vision" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium"
+            >
+              {t.header.menu.vision}
+            </a>
+            <a 
+              href="#investors" 
               className="text-textMedium hover:text-primary transition-smooth font-medium"
             >
               {t.header.menu.investors}
-            </Link>
-            <Link 
-              href="/contact" 
+            </a>
+            <a 
+              href="#media" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium"
+            >
+              {t.header.menu.media}
+            </a>
+            <a 
+              href="#contact" 
               className="text-textMedium hover:text-primary transition-smooth font-medium"
             >
               {t.header.menu.contact}
-            </Link>
+            </a>
             
             {/* Language Toggle */}
             <button
@@ -67,13 +85,15 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
               {t.header.menu.langToggle}
             </button>
 
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-smooth font-semibold"
-            >
-              {t.header.cta}
-            </Link>
+            {/* CTA Button - Only show for English */}
+            {lang === 'en' && (
+              <Link
+                href="#contact"
+                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-smooth font-semibold"
+              >
+                {t.header.cta}
+              </Link>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -104,48 +124,72 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 flex flex-col space-y-2 pb-2">
-            <Link 
-              href="/#home" 
+            <a 
+              href="#home" 
               className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.header.menu.home}
-            </Link>
-            <Link 
-              href="/#about" 
+            </a>
+            <a 
+              href="#about" 
               className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.header.menu.about}
-            </Link>
-            <Link 
-              href="/#solution" 
+            </a>
+            <a 
+              href="#problem" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.header.menu.problem}
+            </a>
+            <a 
+              href="#solution" 
               className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.header.menu.solution}
-            </Link>
-            <Link 
-              href="/investors" 
+            </a>
+            <a 
+              href="#vision" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.header.menu.vision}
+            </a>
+            <a 
+              href="#investors" 
               className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.header.menu.investors}
-            </Link>
-            <Link 
-              href="/contact" 
+            </a>
+            <a 
+              href="#media" 
+              className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.header.menu.media}
+            </a>
+            <a 
+              href="#contact" 
               className="text-textMedium hover:text-primary transition-smooth font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.header.menu.contact}
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:shadow-lg transition-smooth font-semibold text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t.header.cta}
-            </Link>
+            </a>
+            {/* CTA Button - Only show for English */}
+            {lang === 'en' && (
+              <a
+                href="#contact"
+                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:shadow-lg transition-smooth font-semibold text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.header.cta}
+              </a>
+            )}
           </nav>
         )}
       </div>
