@@ -9,12 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // FemSelect Color Palette
-        primary: "#4A6FA5",        // Clinical Blue-Gray
-        secondary: "#6B8CBB",      // Lighter Blue
+        // Startup Peach Pink Color Palette
+        primary: "#FF9A8B",        // Peach Pink
+        secondary: "#FF6A88",      // Deep Pink
+        accent: "#FF99AC",         // Light Pink
+        peachBg: "#FFF5F3",        // Very Light Peach Background
         darkSlate: "#1E293B",      // Dark Slate for headings
         mediumGray: "#64748B",     // Medium Gray for body text
-        lightGray: "#E2E8F0",      // Light Gray for borders
+        lightGray: "#FFE5E0",      // Light Peach Gray for borders
         white: "#FFFFFF",          // Pure White
       },
       fontFamily: {
