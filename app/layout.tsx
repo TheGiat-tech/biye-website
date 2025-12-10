@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     title: "BiYé - Smart FemTech & IoT Solution",
     description: "Revolutionizing women's hygiene accessibility through smart FemTech and IoT solutions.",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
