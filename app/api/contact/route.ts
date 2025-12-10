@@ -1,5 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+
+type ReqBody = {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+};
 
 // Helper function to escape HTML to prevent XSS
 function escapeHtml(text: string): string {
@@ -13,175 +19,65 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
-// Helper function to sanitize email header to prevent header injection
-function sanitizeHeader(text: string): string {
-  // Remove newlines and carriage returns to prevent header injection
-  return text.replace(/[\r\n]/g, ' ').trim();
-}
-
-// Constants for validation
-const MAX_NAME_LENGTH = 200;
-const MAX_EMAIL_LENGTH = 200;
-const MAX_SUBJECT_LENGTH = 500;
-const MAX_MESSAGE_LENGTH = 10000;
-const SMTP_TIMEOUT_MS = 10000; // 10 seconds
-
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    // Parse request body
-    const body = await request.json();
-    const { name, email, subject, message } = body;
+    const body: ReqBody = await request.json();
 
-    // Validate required fields
+    const name = (body.name || '').trim();
+    const email = (body.email || '').trim();
+    const subject = (body.subject || 'New contact message').trim();
+    const message = (body.message || '').trim();
+
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields: name, email, and message are required' },
-        { status: 400 }
-      );
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    // Validate field lengths to prevent abuse
-    if (
-      name.length > MAX_NAME_LENGTH || 
-      email.length > MAX_EMAIL_LENGTH || 
-      (subject && subject.length > MAX_SUBJECT_LENGTH) || 
-      message.length > MAX_MESSAGE_LENGTH
-    ) {
-      return NextResponse.json(
-        { error: 'One or more fields exceed maximum length' },
-        { status: 400 }
-      );
+    const host = process.env.SMTP_HOST;
+    const port = Number(process.env.SMTP_PORT || 587);
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const secure = process.env.SMTP_SECURE === 'true';
+    const to = process.env.CONTACT_EMAIL || process.env.SMTP_USER || 'info@biye.com';
+
+    if (!host || !user || !pass) {
+      console.error('SMTP env not configured');
+      return new Response(JSON.stringify({ error: 'Server email not configured' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
-    }
-
-    // Get environment variables
-    const contactEmail = process.env.CONTACT_EMAIL;
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = process.env.SMTP_PORT;
-    const smtpSecure = process.env.SMTP_SECURE === 'true';
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-
-    // Validate SMTP configuration
-    if (!contactEmail || !smtpHost || !smtpPort || !smtpUser || !smtpPass) {
-      console.error('Missing SMTP configuration in environment variables');
-      return NextResponse.json(
-        { error: 'Email service is not configured. Please contact support.' },
-        { status: 500 }
-      );
-    }
-
-    // Create nodemailer transporter with timeout
     const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: parseInt(smtpPort),
-      secure: smtpSecure,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-      connectionTimeout: SMTP_TIMEOUT_MS,
-      greetingTimeout: SMTP_TIMEOUT_MS,
-      socketTimeout: SMTP_TIMEOUT_MS,
+      host,
+      port,
+      secure,
+      auth: { user, pass },
     });
 
-    // Sanitize user inputs for HTML email
-    const sanitizedName = escapeHtml(name);
-    const sanitizedEmail = escapeHtml(email);
-    const sanitizedSubject = escapeHtml(subject || 'N/A');
-    const sanitizedMessage = escapeHtml(message);
-
-    // Sanitize for email headers to prevent header injection
-    const headerSafeName = sanitizeHeader(name);
-    const headerSafeEmail = sanitizeHeader(email);
-    const headerSafeSubject = sanitizeHeader(subject || `Contact Form Submission from ${headerSafeName}`);
-
-    // Prepare email content
     const mailOptions = {
-      from: smtpUser,
-      to: contactEmail,
-      replyTo: headerSafeEmail,
-      subject: headerSafeSubject,
-      text: `
-Name: ${name}
-Email: ${email}
-Subject: ${subject || 'N/A'}
-
-Message:
-${message}
-      `,
-      html: `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #666; }
-    .value { margin-top: 5px; }
-    .message { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; white-space: pre-wrap; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h2 style="margin: 0; color: #333;">New Contact Form Submission</h2>
-    </div>
-    
-    <div class="field">
-      <div class="label">From:</div>
-      <div class="value">${sanitizedName}</div>
-    </div>
-    
-    <div class="field">
-      <div class="label">Email:</div>
-      <div class="value"><a href="mailto:${sanitizedEmail}">${sanitizedEmail}</a></div>
-    </div>
-    
-    <div class="field">
-      <div class="label">Subject:</div>
-      <div class="value">${sanitizedSubject}</div>
-    </div>
-    
-    <div class="field">
-      <div class="label">Message:</div>
-      <div class="message">${sanitizedMessage}</div>
-    </div>
-  </div>
-</body>
-</html>
-      `,
+      from: `"${name}" <${user}>`,
+      to,
+      replyTo: email,
+      subject: `${subject}`,
+      text: `${message}\n\nFrom: ${name} <${email}>`,
+      html: `<p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p><hr/><p>From: ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>`,
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
 
-    // Log success (without personal data for privacy)
-    console.log('Contact form submission sent successfully');
-
-    return NextResponse.json(
-      { success: true, message: 'Email sent successfully' },
-      { status: 200 }
-    );
-  } catch (error) {
-    // Log error details server-side
-    console.error('Error sending contact form email:', error);
-
-    // Return generic error to client
-    return NextResponse.json(
-      { error: 'Failed to send email. Please try again later.' },
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    console.error('contact route error', err);
+    return new Response(JSON.stringify({ error: err?.message || 'Server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
