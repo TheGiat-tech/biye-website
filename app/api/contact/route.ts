@@ -33,6 +33,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate field lengths to prevent abuse
+    if (name.length > 200 || email.length > 200 || (subject && subject.length > 500) || message.length > 10000) {
+      return NextResponse.json(
+        { error: 'One or more fields exceed maximum length' },
+        { status: 400 }
+      );
+    }
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -147,8 +155,8 @@ ${message}
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Log success (without sensitive data)
-    console.log(`Contact form submission sent successfully from ${email}`);
+    // Log success (without personal data for privacy)
+    console.log('Contact form submission sent successfully');
 
     return NextResponse.json(
       { success: true, message: 'Email sent successfully' },
