@@ -16,13 +16,34 @@ export default function ContactPage() {
     e.preventDefault();
     setFormState({ submitting: true, submitted: false, error: false });
 
-    // Simulate form submission - In production, this would call an API
+    const formElement = e.target as HTMLFormElement;
+    const formData = {
+      name: (formElement.elements.namedItem('name') as HTMLInputElement).value,
+      email: (formElement.elements.namedItem('email') as HTMLInputElement).value,
+      subject: (formElement.elements.namedItem('subject') as HTMLInputElement).value,
+      message: (formElement.elements.namedItem('message') as HTMLTextAreaElement).value,
+    };
+
     try {
-      // TODO: Implement actual form submission to backend/email service
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setFormState({ submitting: false, submitted: true, error: false });
-      (e.target as HTMLFormElement).reset();
-    } catch {
+      formElement.reset();
+    } catch (error) {
+      // Only log generic error in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error submitting form:', error);
+      }
       setFormState({ submitting: false, submitted: false, error: true });
     }
   };
