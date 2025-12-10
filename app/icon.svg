@@ -1,13 +1,12 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">BiYé swirl marker icon</title>
-  <desc id="desc">Circular arrow enclosing a spiral map marker with connected nodes on a soft pink background.</desc>
-  <rect width="512" height="512" fill="#ffe5ec" rx="48" ry="48" />
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M89.72,160.00 A192.00,192.00 0 0 1 436.42,321.67" stroke="#f7a2b9" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
-  <polygon points="434.36,350.83 416.54,311.91 392.13,357.83" fill="#f7a2b9" />
-  <path d="M256.00,246.00 L257.67,245.68 L259.43,245.64 L261.25,245.91 L263.07,246.51 L264.82,247.44 L266.44,248.69 L267.89,250.25 L269.09,252.08 L270.00,254.16 L270.58,256.43 L270.77,258.83 L270.56,261.30 L269.93,263.78 L268.88,266.18 L267.40,268.44 L265.52,270.48 L263.28,272.23 L260.72,273.63 L257.90,274.61 L254.88,275.13 L251.75,275.16 L248.58,274.66 L245.47,273.64 L242.50,272.08 L239.76,270.03 L237.34,267.50 L235.32,264.56 L233.78,261.26 L232.77,257.68 L232.34,253.92 L232.53,250.07 L233.35,246.22 L234.81,242.49 L236.89,238.98 L239.56,235.80 L242.76,233.04 L246.42,230.80 L250.47,229.15 L254.80,228.15 L259.30,227.86 L263.87,228.30 L268.37,229.50 L272.70,231.43 L276.71,234.07 L280.31,237.37 L283.37,241.26 L285.80,245.66 L287.52,250.46 L288.46,255.55 L288.57,260.79 L287.83,266.06 L286.23,271.20 L283.79,276.09 L280.56,280.59 L276.60,284.56 L271.99,287.88 L266.84,290.46 L261.28,292.20 L255.44,293.04 L249.46,292.93 L243.51,291.85 L237.74,289.80 L232.31,286.83 L227.37,282.97 L223.06,278.32 L219.51,272.98 L216.83,267.08 L215.11,260.75 L214.41,254.15 L214.79,247.46 L216.25,240.84 L218.78,234.47 L222.33,228.52 L226.83,223.17 L232.19,218.55 L238.28,214.82 L244.95,212.07 L252.05,210.42 L259.40,209.91 L266.80,210.60 L274.08,212.48 L281.02,215.52" fill="none" stroke="#f7a2b9" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M281.02,215.52 Q331.02,251.52 387.02,277.52" fill="none" stroke="#f7a2b9" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="331.02" cy="251.52" r="14" fill="#f7a2b9" />
-  <circle cx="387.02" cy="277.52" r="14" fill="#f7a2b9" />
-  <circle cx="431.02" cy="301.52" r="14" fill="#f7a2b9" />
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BiYé brand swirl favicon</title>
+  <desc id="desc">Soft pink rounded square with a spiral location pin, circuit dots, and a circular arrow.</desc>
+  <rect width="512" height="512" rx="72" ry="72" fill="#f6d7df" />
+  <path d="M92 168a192 192 0 0 1 317.94 136.86" fill="none" stroke="#d26f89" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="434 343 418 309 391 351" fill="#d26f89" />
+  <path d="M258 252c11-2 21 4 24 14 3 10-3 21-13 24-11 4-22-2-25-13-3-11 3-22 14-25 11-2 22 4 25 15 3 11-2 22-13 25-11 4-22-2-25-13-3-11 3-22 14-25 12-2 23 4 26 15 3 11-2 22-13 26-11 3-22-3-26-14-3-11 3-22 14-26 12-3 23 3 26 14 3 11-2 22-14 26-11 3-22-3-26-14-3-11 3-22 14-26 12-3 23 3 26 14 3 11-2 22-13 26-11 3-22-3-26-14-3-11 3-22 14-26" fill="none" stroke="#d26f89" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M284 216c17 11 34 22 51 32s34 20 51 29" fill="none" stroke="#d26f89" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="334" cy="252" r="14" fill="#d26f89" />
+  <circle cx="390" cy="284" r="14" fill="#d26f89" />
+  <circle cx="437" cy="309" r="14" fill="#d26f89" />
 </svg>
