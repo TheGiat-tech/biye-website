@@ -1,0 +1,46 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#FFF5F5"/>
+  
+  <!-- Modern Smart Machine Design -->
+  <g id="machine">
+    <!-- Main body -->
+    <rect x="250" y="150" width="300" height="350" rx="20" fill="#FFFFFF" stroke="#FF9B9B" stroke-width="4"/>
+    
+    <!-- Screen/Display area -->
+    <rect x="280" y="180" width="240" height="160" rx="10" fill="#FFB5B5" opacity="0.3"/>
+    <text x="400" y="250" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#2D1B1B" text-anchor="middle">BiYé</text>
+    <text x="400" y="280" font-family="Inter, sans-serif" font-size="14" fill="#5C4646" text-anchor="middle">Smart Hygiene Access</text>
+    
+    <!-- Dispenser slot -->
+    <rect x="320" y="360" width="160" height="40" rx="5" fill="#E88888"/>
+    <rect x="330" y="370" width="140" height="20" rx="3" fill="#FFC9C9"/>
+    
+    <!-- Status indicators -->
+    <circle cx="300" cy="430" r="8" fill="#4ADE80"/>
+    <circle cx="330" cy="430" r="8" fill="#4ADE80"/>
+    <circle cx="360" cy="430" r="8" fill="#4ADE80"/>
+    
+    <!-- Modern design elements -->
+    <path d="M 270 470 L 530 470" stroke="#FFB5B5" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- IoT/Tech symbols -->
+    <circle cx="480" cy="200" r="15" fill="none" stroke="#FF9B9B" stroke-width="2"/>
+    <circle cx="480" cy="200" r="10" fill="none" stroke="#FF9B9B" stroke-width="2"/>
+    <circle cx="480" cy="200" r="5" fill="#FF9B9B"/>
+    
+    <!-- WiFi/Connection symbol -->
+    <path d="M 320 210 Q 320 190 335 190" stroke="#FF9B9B" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 315 215 Q 315 190 340 190" stroke="#FFB5B5" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="335" cy="220" r="3" fill="#FF9B9B"/>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="100" r="40" fill="#FFC9C9" opacity="0.4"/>
+  <circle cx="650" cy="500" r="50" fill="#FFB5B5" opacity="0.3"/>
+  <circle cx="700" cy="150" r="30" fill="#FFDEDE" opacity="0.5"/>
+  
+  <!-- Female empowerment symbol -->
+  <circle cx="100" cy="300" r="25" fill="none" stroke="#FF9B9B" stroke-width="3"/>
+  <path d="M 100 325 L 100 360 M 85 345 L 115 345" stroke="#FF9B9B" stroke-width="3" stroke-linecap="round"/>
+</svg>

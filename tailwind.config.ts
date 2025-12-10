@@ -9,13 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // FemSelect Color Palette
-        primary: "#4A6FA5",        // Clinical Blue-Gray
-        secondary: "#6B8CBB",      // Lighter Blue
-        darkSlate: "#1E293B",      // Dark Slate for headings
-        mediumGray: "#64748B",     // Medium Gray for body text
-        lightGray: "#E2E8F0",      // Light Gray for borders
+        // BiYé Peach Pink Color Palette
+        primary: "#FF9B9B",        // Peach Pink - Primary
+        secondary: "#FFB5B5",      // Light Peach Pink
+        accent: "#FFC9C9",         // Very Light Peach
+        darkPeach: "#E88888",      // Darker Peach for hover
+        textDark: "#2D1B1B",       // Dark Brown for headings
+        textMedium: "#5C4646",     // Medium Brown for body text
+        lightBg: "#FFF5F5",        // Very Light Peach Background
         white: "#FFFFFF",          // Pure White
+        peachGradient: "#FFDEDE",  // Gradient support
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
