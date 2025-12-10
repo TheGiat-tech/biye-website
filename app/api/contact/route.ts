@@ -42,6 +42,13 @@ export async function POST(request: Request) {
     const secure = process.env.SMTP_SECURE === 'true';
     const to = process.env.CONTACT_EMAIL || process.env.SMTP_USER || 'info@biye.com';
 
+    console.log('Debug Env Vars:', {
+      SMTP_HOST: process.env.SMTP_HOST ? 'Defined' : 'Missing',
+      SMTP_USER: process.env.SMTP_USER ? 'Defined' : 'Missing',
+      SMTP_PASS: process.env.SMTP_PASS ? 'Defined' : 'Missing',
+      SMTP_PORT: process.env.SMTP_PORT,
+    });
+
     if (!host || !user || !pass) {
       console.error('SMTP env not configured');
       return new Response(JSON.stringify({ error: 'Server email not configured' }), {
