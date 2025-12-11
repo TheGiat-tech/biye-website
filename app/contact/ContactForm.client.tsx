@@ -37,12 +37,15 @@ export default function ContactForm({ lang, t }: Props) {
       const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
+        setError(null);
         setSubmitted(true);
         e.currentTarget.reset();
       } else {
+        setSubmitted(false);
         setError(data?.error || (lang === 'en' ? 'An error occurred.' : 'אירעה שגיאה.'));
       }
     } catch {
+      setSubmitted(false);
       setError(lang === 'en' ? 'Network error.' : 'שגיאת רשת.');
     } finally {
       setSubmitting(false);
@@ -106,13 +109,13 @@ export default function ContactForm({ lang, t }: Props) {
         />
       </div>
 
-      {submitted && (
+      {submitted && !error && (
         <div className="bg-green-50 border-2 border-green-200 text-green-800 px-4 py-3 rounded-lg">
           {lang === 'en' ? 'Thank you! Your message has been sent.' : 'תודה! ההודעה שלך נשלחה.'}
         </div>
       )}
 
-      {error && (
+      {error && !submitted && (
         <div className="bg-red-50 border-2 border-red-200 text-red-800 px-4 py-3 rounded-lg">
           {error}
         </div>
@@ -120,7 +123,7 @@ export default function ContactForm({ lang, t }: Props) {
 
       <button
         type="submit"
-        className="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-darkPeach transition-smooth shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-darkPeach transition-smooth shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50"
         disabled={submitting}
       >
         {submitting ? (lang === 'en' ? 'Sending...' : 'שולח...') : t.contact.button}
