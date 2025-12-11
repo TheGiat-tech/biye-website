@@ -28,23 +28,34 @@ export default function ContactForm({ lang, t }: Props) {
     };
 
     try {
+      console.log('Submitting contact form...');
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
 
+      console.log('Response status:', res.status, 'res.ok:', res.ok);
+      
       const data = await res.json().catch(() => ({}));
+      console.log('Response data:', data);
 
       if (res.ok) {
+        // Clear error first, then set submitted
         setError(null);
         setSubmitted(true);
         e.currentTarget.reset();
+        
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
       } else {
         setSubmitted(false);
         setError(data?.error || (lang === 'en' ? 'An error occurred.' : 'אירעה שגיאה.'));
       }
-    } catch {
+    } catch (err) {
+      console.error('Contact form error:', err);
       setSubmitted(false);
       setError(lang === 'en' ? 'Network error.' : 'שגיאת רשת.');
     } finally {
