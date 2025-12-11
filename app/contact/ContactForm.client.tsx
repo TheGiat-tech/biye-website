@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect, useRef } from 'react';
 
 type Props = {
   lang: 'en' | 'he';
@@ -12,12 +12,28 @@ export default function ContactForm({ lang, t }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const successTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (successTimeoutRef.current) {
+        clearTimeout(successTimeoutRef.current);
+      }
+    };
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
     setSubmitted(false);
     setError(null);
+
+    // Clear any existing success timeout
+    if (successTimeoutRef.current) {
+      clearTimeout(successTimeoutRef.current);
+      successTimeoutRef.current = null;
+    }
 
     const form = new FormData(e.currentTarget);
     const body = {
@@ -28,17 +44,23 @@ export default function ContactForm({ lang, t }: Props) {
     };
 
     try {
-      console.log('Submitting contact form...');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Submitting contact form...');
+      }
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
 
-      console.log('Response status:', res.status, 'res.ok:', res.ok);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Response status:', res.status, 'res.ok:', res.ok);
+      }
       
       const data = await res.json().catch(() => ({}));
-      console.log('Response data:', data);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Response data:', data);
+      }
 
       if (res.ok) {
         // Clear error first, then set submitted
@@ -47,15 +69,18 @@ export default function ContactForm({ lang, t }: Props) {
         e.currentTarget.reset();
         
         // Clear success message after 5 seconds
-        setTimeout(() => {
+        successTimeoutRef.current = setTimeout(() => {
           setSubmitted(false);
+          successTimeoutRef.current = null;
         }, 5000);
       } else {
         setSubmitted(false);
         setError(data?.error || (lang === 'en' ? 'An error occurred.' : 'אירעה שגיאה.'));
       }
     } catch (err) {
-      console.error('Contact form error:', err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Contact form error:', err);
+      }
       setSubmitted(false);
       setError(lang === 'en' ? 'Network error.' : 'שגיאת רשת.');
     } finally {
