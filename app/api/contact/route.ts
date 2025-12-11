@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 
+export const runtime = 'nodejs';
+
 type ReqBody = {
   name?: string;
   email?: string;
@@ -65,7 +67,7 @@ export async function POST(request: Request) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${user}>`,
+      from: `"BiYé Website" <${to}>`,
       to,
       replyTo: email,
       subject: `${subject}`,
@@ -82,7 +84,7 @@ export async function POST(request: Request) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('contact route error', err);
-    return new Response(JSON.stringify({ error: err?.message || 'Server error' }), {
+    return new Response(JSON.stringify({ error: 'Server error, please try again later' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
