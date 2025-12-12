@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Language, Translation } from '@/app/types';
 import { useState } from 'react';
@@ -19,7 +20,15 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/biye-logo.svg"
+              alt="BiYé logo"
+              width={40}
+              height={40}
+              className="drop-shadow-sm"
+              priority
+            />
             <span className="text-3xl font-bold text-primary hover:text-darkPeach transition-smooth">
               {t.header.logo}
             </span>
