@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BiYé brand swirl favicon</title>
+  <desc id="desc">Soft pink rounded square with a spiral location pin, circuit dots, and a circular arrow.</desc>
+  <rect width="512" height="512" rx="72" ry="72" fill="#f6d7df" />
+  <path d="M92 168a192 192 0 0 1 317.94 136.86" fill="none" stroke="#d26f89" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="434 343 418 309 391 351" fill="#d26f89" />
+  <path d="M258 252c11-2 21 4 24 14 3 10-3 21-13 24-11 4-22-2-25-13-3-11 3-22 14-25 11-2 22 4 25 15 3 11-2 22-13 25-11 4-22-2-25-13-3-11 3-22 14-25 12-2 23 4 26 15 3 11-2 22-13 26-11 3-22-3-26-14-3-11 3-22 14-26 12-3 23 3 26 14 3 11-2 22-14 26-11 3-22-3-26-14-3-11 3-22 14-26 12-3 23 3 26 14 3 11-2 22-13 26-11 3-22-3-26-14-3-11 3-22 14-26" fill="none" stroke="#d26f89" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M284 216c17 11 34 22 51 32s34 20 51 29" fill="none" stroke="#d26f89" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="334" cy="252" r="14" fill="#d26f89" />
+  <circle cx="390" cy="284" r="14" fill="#d26f89" />
+  <circle cx="437" cy="309" r="14" fill="#d26f89" />
+</svg>
