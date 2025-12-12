@@ -97,7 +97,7 @@ export default function Header({ lang, t, onLanguageToggle }: HeaderProps) {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-textMedium hover:text-primary p-2 transform hover:scale-110 active:scale-95 transition-smooth"
+              className="text-textMedium hover:text-primary p-2 transform hover:rotate-90 active:scale-95 transition-smooth"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

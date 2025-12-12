@@ -17,9 +17,9 @@ export default function Footer({ lang, t }: FooterProps) {
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>
           {/* Company Section */}
           <div>
-            <div className="mb-4">
-              <span className="text-3xl font-bold text-primary inline-block transform hover:scale-105 active:scale-95 transition-smooth cursor-pointer">{t.header.logo}</span>
-            </div>
+            <Link href="/" className="mb-4 inline-block">
+              <span className="text-3xl font-bold text-primary transform hover:scale-105 active:scale-95 transition-smooth inline-block">{t.header.logo}</span>
+            </Link>
             <p className="text-textMedium text-sm mb-4 leading-relaxed">
               {t.footer.company.about}
             </p>
