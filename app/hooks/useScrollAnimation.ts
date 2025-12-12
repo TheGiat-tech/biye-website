@@ -8,15 +8,14 @@ export function useScrollAnimation(threshold = 0.1) {
 
   useEffect(() => {
     const element = ref.current;
+    if (!element) return;
     
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Once visible, stop observing
-          if (element) {
-            observer.unobserve(element);
-          }
+          // Unobserve using entry.target to ensure correct element reference
+          observer.unobserve(entry.target);
         }
       },
       {
@@ -25,14 +24,11 @@ export function useScrollAnimation(threshold = 0.1) {
       }
     );
 
-    if (element) {
-      observer.observe(element);
-    }
+    observer.observe(element);
 
     return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      // Disconnect observer to clean up all observations
+      observer.disconnect();
     };
   }, [threshold]);
 
