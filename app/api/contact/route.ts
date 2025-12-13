@@ -76,8 +76,11 @@ export async function POST(request: Request) {
     };
 
     await transporter.sendMail(mailOptions);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Email sent successfully to:', to);
+    }
 
-    return new Response(JSON.stringify({ ok: true }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

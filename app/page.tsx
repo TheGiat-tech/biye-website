@@ -5,6 +5,7 @@ import { translations } from './utils/translations';
 import Header from './components/global/Header';
 import Footer from './components/global/Footer';
 import ContactForm from './contact/ContactForm.client';
+import AnimatedSection from './components/AnimatedSection';
 import Image from 'next/image';
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
       <Header lang={lang} t={t} onLanguageToggle={toggleLanguage} />
 
       {/* Hero Section */}
-      <section id="home" className="relative overflow-hidden">
+      <section id="home" className="relative overflow-hidden animate-fade-in">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 via-accent/20 to-peachGradient/30"></div>
         <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-textDark mb-6 leading-tight">
@@ -36,27 +37,27 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white">
+      <AnimatedSection id="about" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.about.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
             {t.about.text}
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Problem Section */}
-      <section id="problem" className="py-20 px-6 bg-lightBg">
+      <AnimatedSection id="problem" className="py-20 px-6 bg-lightBg">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.problem.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
             {t.problem.text}
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Solution Section */}
-      <section id="solution" className="py-20 px-6 bg-white">
+      <AnimatedSection id="solution" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-12 text-center">{t.solution.title}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -73,30 +74,30 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Vision Section */}
-      <section id="vision" className="py-20 px-6 bg-gradient-to-br from-secondary/20 to-accent/20">
+      <AnimatedSection id="vision" className="py-20 px-6 bg-gradient-to-br from-secondary/20 to-accent/20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.vision.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
             {t.vision.text}
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Investors Section */}
-      <section id="investors" className="py-20 px-6 bg-white">
+      <AnimatedSection id="investors" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.investors.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center whitespace-pre-line">
             {t.investors.text}
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Media Section */}
-      <section id="media" className="py-20 px-6 bg-lightBg">
+      <AnimatedSection id="media" className="py-20 px-6 bg-lightBg">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-6 text-center">{t.media.title}</h2>
           <p className="text-lg text-textMedium leading-relaxed text-center mb-12 whitespace-pre-line">
@@ -115,15 +116,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-white">
+      <AnimatedSection id="contact" className="py-20 px-6 bg-white">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-4xl font-bold text-textDark mb-12 text-center">{t.contact.title}</h2>
           <ContactForm lang={lang} t={t} />
         </div>
-      </section>
+      </AnimatedSection>
 
       <Footer lang={lang} t={t} />
     </div>

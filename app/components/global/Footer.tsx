@@ -17,9 +17,9 @@ export default function Footer({ lang, t }: FooterProps) {
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>
           {/* Company Section */}
           <div>
-            <div className="mb-4">
-              <span className="text-3xl font-bold text-primary">{t.header.logo}</span>
-            </div>
+            <Link href="/" className="mb-4 inline-block">
+              <span className="text-3xl font-bold text-primary transform hover:scale-105 active:scale-95 transition-smooth inline-block">{t.header.logo}</span>
+            </Link>
             <p className="text-textMedium text-sm mb-4 leading-relaxed">
               {t.footer.company.about}
             </p>
@@ -28,7 +28,7 @@ export default function Footer({ lang, t }: FooterProps) {
                 <div key={index}>
                   <Link
                     href={link.href}
-                    className="text-textMedium hover:text-primary transition-smooth text-sm font-medium"
+                    className="text-textMedium hover:text-primary transition-smooth text-sm font-medium inline-block transform hover:translate-x-1 active:scale-95"
                   >
                     {link.label}
                   </Link>
@@ -45,7 +45,7 @@ export default function Footer({ lang, t }: FooterProps) {
                 <div key={index}>
                   <Link
                     href={link.href}
-                    className="text-textMedium hover:text-primary transition-smooth text-sm font-medium"
+                    className="text-textMedium hover:text-primary transition-smooth text-sm font-medium inline-block transform hover:translate-x-1 active:scale-95"
                   >
                     {link.label}
                   </Link>
@@ -59,14 +59,14 @@ export default function Footer({ lang, t }: FooterProps) {
             <h3 className="text-lg font-bold text-textDark mb-4">{t.footer.connect.title}</h3>
             <a
               href={`mailto:${t.footer.connect.email}`}
-              className="text-primary hover:text-darkPeach transition-smooth text-sm font-medium"
+              className="text-primary hover:text-darkPeach transition-smooth text-sm font-medium inline-block transform hover:scale-105 active:scale-95"
             >
               {t.footer.connect.email}
             </a>
             <div className="mt-6">
               <Link
                 href="/contact"
-                className="inline-block bg-primary text-white px-6 py-3 rounded-full hover:bg-darkPeach transition-smooth font-semibold text-sm shadow-md hover:shadow-lg"
+                className="inline-block bg-primary text-white px-6 py-3 rounded-full hover:bg-darkPeach transition-smooth font-semibold text-sm shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95"
               >
                 {t.header.menu.contact}
               </Link>
